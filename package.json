@@ -1,0 +1,20 @@
+{
+  "name": "kielczewski",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": "https://github.com/kkielczewski/kielczewski",
+  "author": "Kamil <kam.kielczewski@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "core-js": "^2.5.6",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.8",
+    "rxjs": "^6.1.0"
+  },
+  "devDependencies": {
+  }
+}

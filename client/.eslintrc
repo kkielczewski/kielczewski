@@ -1,0 +1,32 @@
+{
+    "extends": ["airbnb-base"],
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "no-unused-vars": 0,
+        "max-len": [1, 120, 2, {
+            "ignoreComments": true
+        }],
+        "comma-dangle": ["error", "never"],
+        "linebreak-style": ["error", "windows"]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js",".jsx"],
+                "moduleDirectory": [
+                    "node_modules",
+                    "src"
+                ]
+          }
+        }
+    }
+}
