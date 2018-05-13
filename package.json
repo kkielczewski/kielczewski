@@ -9,12 +9,43 @@
   "author": "Kamil <kam.kielczewski@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "core-js": "^2.5.6",
+    "crypto-promise": "^2.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "kcors": "^2.2.1",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-combine-routers": "^3.0.1",
+    "koa-logger": "^3.2.0",
+    "koa-passport": "^4.0.1",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.10",
+    "mailgun-js": "^0.18.0",
+    "moment": "^2.22.1",
     "mongodb": "^3.0.8",
     "mongoose": "^5.1.0",
-    "rxjs": "^6.1.0"
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "rxjs": "^6.1.0",
+    "socket.io": "^2.1.0",
+    "stripe": "^5.9.0",
+    "validator": "^10.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3",
+    "supertest": "^3.0.0"
+  }
 }
