@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "cd client && yarn install && yarn build"
   },
   "repository": "https://github.com/kkielczewski/kielczewski",
   "author": "Kamil <kam.kielczewski@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "core-js": "^2.5.6",
