@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const logger = require('koa-logger');
 const cors = require('kcors');
 const bodyParser = require('koa-bodyparser');
+const serve = require('koa-static');
+const send = require('koa-send');
 const routes = require('./routes');
 const config = require('./config');
 
@@ -12,11 +14,16 @@ mongoose.Promise = global.Promise;
 // Connect to MongoDB
 mongoose.connect(config.database.url, config.database.opts);
 
+//
 const app = new Koa()
   .use(cors())
   .use(logger())
   .use(bodyParser())
-  .use(routes);
+  .use(routes)
+  .use(serve(__dirname + '/client/public'))
+  .use(function* index() {
+    yield send(this, '/client/public/index.html');
+  });
 
 const server = app.listen(config.server.port);
 
@@ -26,7 +33,7 @@ module.exports = server;
 
 /*
 // Importing Node modules and initializing Express
-const express = require('express'),  
+const express = require('express'),
       app = express(),
       bodyParser = require('body-parser'),
       logger = require('morgan'),
@@ -46,15 +53,15 @@ const server = app.listen(config.port, function () {
 
 const io = require('socket.io').listen(server);
 
-socketEvents(io);  
+socketEvents(io);
 
 // Setting up basic middleware for all Express requests
 app.use(logger('dev')); // Log requests to API using morgan
-app.use(bodyParser.urlencoded({ extended: false }));  
-app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Enable CORS from client-side
-app.use(function(req, res, next) {  
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
@@ -63,7 +70,7 @@ app.use(function(req, res, next) {
 });
 
 
-router(app); 
+router(app);
 
 
 */
