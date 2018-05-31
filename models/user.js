@@ -1,48 +1,48 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const ROLES = require('../constants').ROLES;
-
-const Schema = mongoose.Schema;
+const { ROLES } = require('../constants');
 
 //= ===============================
 // User Schema
 //= ===============================
-const UserSchema = new Schema({
-  email: {
-    type: String,
-    lowercase: true,
-    unique: true,
-    required: true,
+const UserSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      lowercase: true,
+      unique: true,
+      required: true,
+    },
+    password: { type: String, required: true },
+    name: {
+      first: { type: String, required: true },
+      last: { type: String, required: true },
+    },
+    role: {
+      type: String,
+      enum: Object.keys(ROLES).map(key => ROLES[key]),
+      default: ROLES.USER,
+    },
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date },
+    billing: {
+      customerId: { type: String },
+      subscriptionId: { type: String },
+      plan: { type: String },
+      nextPaymentDue: { type: Date },
+    },
+    deactivated: { type: Boolean, default: false },
   },
-  password: { type: String, required: true },
-  name: {
-    first: { type: String, required: true },
-    last: { type: String, required: true },
+  {
+    timestamps: true,
+    toObject: {
+      virtuals: true,
+    },
+    toJSON: {
+      virtuals: true,
+    },
   },
-  role: {
-    type: String,
-    enum: Object.keys(ROLES).map(key => ROLES[key]),
-    default: ROLES.USER,
-  },
-  resetPasswordToken: { type: String },
-  resetPasswordExpires: { type: Date },
-  billing: {
-    customerId: { type: String },
-    subscriptionId: { type: String },
-    plan: { type: String },
-    nextPaymentDue: { type: Date },
-  },
-  deactivated: { type: Boolean, default: false },
-},
-{
-  timestamps: true,
-  toObject: {
-    virtuals: true,
-  },
-  toJSON: {
-    virtuals: true,
-  },
-});
+);
 
 UserSchema.virtual('fullName').get(function virtualFullName() {
   return `${this.name.first} ${this.name.last}`;

@@ -2,7 +2,8 @@
   "name": "kielczewski",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "cd client && yarn install && yarn build"
   },
   "repository": "https://github.com/kkielczewski/kielczewski",
   "author": "Kamil <kam.kielczewski@gmail.com>",

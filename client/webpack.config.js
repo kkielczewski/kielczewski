@@ -1,78 +1,30 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const buildValidations = require('./build-utils/build-validations');
 
-module.exports = {
-  entry: ['./src/index.jsx'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js?[hash]'
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    modules: [
-      path.resolve('./src'),
-      path.resolve('./node_modules')
-    ]
-  },
-  devServer: {
-    contentBase: './dist',
-    historyApiFallback: true // Manual typing route in the URL bar connected to react-router.
-  },
-  module: {
-    rules: [
-      // Images
-      {
-        test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]?[hash]',
-            outputPath: 'assets/images/'
-          }
-        }
-      },
-      // Fonts
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            name: '[name].[ext]?[hash]',
-            limit: 10000,
-            mimetype: 'application/fontwoff',
-            outputPath: 'assets/fonts/'
-          }
-        }
-      },
-      // Babel
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      // ESLint
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader'
-        }
-      },
-      // HTML
-      {
-        test: /\.html$/,
-        use: {
-          loader: 'html-loader'
-        }
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    })
-  ]
+const webpackMerge = require('webpack-merge');
+
+const addons = (addonsArg) => {
+  const addon = [...[addonsArg]]
+    .filter(Boolean); // If addons is undefined, filter it out
+
+  /* eslint-disable */
+  return addon.map(addonName =>
+    require(`./build-utils/addons/webpack.${addonName}.js`)
+  );
+  /* eslint-enable */
+};
+
+module.exports = (env) => {
+  if (!env) {
+    throw new Error(buildValidations.ERR_NO_ENV_FLAG);
+  }
+  /* eslint-disable */
+  const envConfig = require(`./build-utils/webpack.${env.env}.js`);
+  /* eslint-enable */
+
+  const mergedConfig = webpackMerge(
+    envConfig,
+    ...addons(env.addons)
+  );
+
+  return mergedConfig;
 };

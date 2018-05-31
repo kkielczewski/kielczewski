@@ -4,7 +4,6 @@ module.exports = () => {
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/test',
     opts: {
       autoReconnect: true,
-      keepAlive: 300000,
     },
   };
 
