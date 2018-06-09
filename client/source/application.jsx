@@ -6,9 +6,6 @@ import configureStore from './app/store';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>Dupsko</BrowserRouter>
-  </Provider>
+ReactDOM.render(<div></div>
   , document.getElementById('react-app'),
 );
