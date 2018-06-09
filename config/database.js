@@ -3,8 +3,8 @@ module.exports = () => {
   const dbConfig = {
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/test',
     opts: {
-      autoReconnect: true,
-    },
+      autoReconnect: true
+    }
   };
 
   switch (process.env.NODE_ENV) {

@@ -1,11 +1,11 @@
 const crypto = require('crypto-promise');
 const moment = require('moment');
-const passport = require('../config').passport;
+const { passport } = require('../config');
 const User = require('../models/user');
 const userUtils = require('../utils/user-utils');
 const emailUtils = require('../utils/email-utils');
 const validationUtils = require('../utils/validation-utils');
-const ERRORS = require('../constants').ERRORS;
+const { ERRORS } = require('../constants');
 
 const { standardizeUser, generateJWT, getRole } = userUtils;
 const { sendEmail } = emailUtils;
@@ -21,7 +21,7 @@ const createTokenCtx = (user) => {
   return {
     token: `JWT ${tokenData.token}`,
     tokenExpiration: tokenData.expiration,
-    user: standardizeUser(user),
+    user: standardizeUser(user)
   };
 };
 
@@ -49,7 +49,7 @@ exports.jwtAuth = (ctx, next) => passport.authenticate('jwt', async (err, payloa
 })(ctx, next);
 
 /**
- * localAuth  - Attempts to login a user with an email address and password
+ * login  - Attempts to login a user with an email address and password
  *              using PassportJS (http://passportjs.org/docs)
  */
 exports.login = (ctx, next) => passport.authenticate('local', async (err, user) => {
@@ -73,7 +73,7 @@ exports.register = async (ctx, next) => {
   const validation = responseValidator(ctx.request.body, [
     { name: 'email', required: true },
     { name: 'name', required: true },
-    { name: 'password', required: true },
+    { name: 'password', required: true }
   ]);
 
   if (validation && validation.length && validation[0].error) {
@@ -97,7 +97,7 @@ exports.register = async (ctx, next) => {
         user = new User({
           name,
           password,
-          email,
+          email
         });
 
         const savedUser = await user.save();
@@ -120,11 +120,13 @@ exports.forgotPassword = async (ctx, next) => {
   try {
     const buffer = await crypto.randomBytes(48);
     const resetToken = buffer.toString('hex');
-    const user = await User.findOneAndUpdate({ email },
+    const user = await User.findOneAndUpdate(
+      { email },
       {
         resetPasswordToken: resetToken,
-        resetPasswordExpires: moment().add(1, 'hour'),
-      });
+        resetPasswordExpires: moment().add(1, 'hour')
+      }
+    );
 
     // If a user was actually updated, send an email
     if (user) {
@@ -133,14 +135,14 @@ exports.forgotPassword = async (ctx, next) => {
         text: `${'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://'}${ctx.host}/reset-password/${resetToken}\n\n` +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n',
+          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
 
       await sendEmail(email, message);
     }
 
     ctx.body = {
-      message: `We sent an email to ${email} containing a password reset link. It will expire in one hour.`,
+      message: `We sent an email to ${email} containing a password reset link. It will expire in one hour.`
     };
 
     await next();
@@ -164,7 +166,8 @@ exports.resetPassword = async (ctx, next) => {
     } else {
       const user = await User.findOneAndUpdate(
         { resetPasswordToken: resetToken, resetPasswordExpires: { $gt: Date.now() } },
-        { password, resetPasswordToken: undefined, resetPasswordExpires: undefined });
+        { password, resetPasswordToken: undefined, resetPasswordExpires: undefined }
+      );
 
       if (!user) {
         // If no user was found, their reset request likely expired. Tell them that.

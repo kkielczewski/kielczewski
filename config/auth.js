@@ -28,6 +28,6 @@ module.exports = {
   },
   opts: {
     secret: SECRET,
-    expiration: 604800,
-  },
+    expiration: 604800
+  }
 };

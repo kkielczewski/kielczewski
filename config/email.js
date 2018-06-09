@@ -2,7 +2,7 @@ module.exports = () => {
   // Default to dev presets
   const emailConfig = {
     apiKey: 'key-xxxx',
-    domain: 'mg.yourdomain.com',
+    domain: 'mg.yourdomain.com'
   };
 
   switch (process.env.NODE_ENV) {

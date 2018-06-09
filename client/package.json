@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "autoprefixer": "^8.5.2",
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
@@ -40,6 +41,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "semantic-ui-react": "^0.80.2",

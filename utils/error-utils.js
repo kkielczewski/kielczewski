@@ -14,5 +14,5 @@ const errorLogger = (err) => {
 
 module.exports = {
   errorHandler,
-  errorLogger,
+  errorLogger
 };

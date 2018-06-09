@@ -6,46 +6,6 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-/*
-const port = process.env.PORT || 3000;
-
-const config = {
-  mode: 'development',
-  entry: {
-    app: `${commonPaths.appEntry}/index.js`
-  },
-  output: {
-    filename: '[name].[hash].js'
-  },
-  devtool: 'inline-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
-      }
-    ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  devServer: {
-    host: 'localhost',
-    port: port,
-    historyApiFallback: true,
-    hot: true,
-    open: true
-  }
-};
-module.exports = config;
-*/
 
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || '8080';

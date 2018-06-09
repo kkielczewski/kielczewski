@@ -9,7 +9,7 @@ exports.sendEmail = (recipient, message, attachment) =>
       subject: message.subject,
       text: message.text,
       inline: attachment,
-      html: message.html,
+      html: message.html
     };
 
     mailgun.messages().send(data, (error) => {

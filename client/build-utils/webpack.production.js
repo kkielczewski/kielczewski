@@ -8,53 +8,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-/*
-const config = {
-  mode: 'production',
-  entry: {
-    app: [`${commonPaths.appEntry}/index.js`]
-  },
-  output: {
-    filename: 'static/[name].[hash].js'
-  },
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  ctx: {
-                    autoprefixer: {
-                      browsers: 'last 2 versions'
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        })
-      }
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'styles/styles.[hash].css',
-      allChunks: true
-    })
-  ]
-};
-module.exports = config;
-*/
-
 module.exports = {
   entry: {
     app:

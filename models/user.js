@@ -11,36 +11,30 @@ const UserSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
       unique: true,
-      required: true,
+      required: true
     },
     password: { type: String, required: true },
     name: {
       first: { type: String, required: true },
-      last: { type: String, required: true },
+      last: { type: String, required: true }
     },
     role: {
       type: String,
       enum: Object.keys(ROLES).map(key => ROLES[key]),
-      default: ROLES.USER,
+      default: ROLES.USER
     },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
-    billing: {
-      customerId: { type: String },
-      subscriptionId: { type: String },
-      plan: { type: String },
-      nextPaymentDue: { type: Date },
-    },
-    deactivated: { type: Boolean, default: false },
+    deactivated: { type: Boolean, default: false }
   },
   {
     timestamps: true,
     toObject: {
-      virtuals: true,
+      virtuals: true
     },
     toJSON: {
-      virtuals: true,
-    },
+      virtuals: true
+    }
   },
 );
 

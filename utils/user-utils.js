@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const authConfig = require('../config').auth;
-const ROLES = require('../constants').ROLES;
+const { ROLES } = require('../constants');
 
 /**
 * standardizeUser - Standardizes user and strips unnecessary data
@@ -13,7 +13,7 @@ const standardizeUser = user => ({
   firstName: _.get(user, 'name.first') || '',
   lastName: _.get(user, 'name.last') || '',
   email: _.get(user, 'email') || '',
-  role: _.get(user, 'role') || '',
+  role: _.get(user, 'role') || ''
 });
 
 /**
@@ -23,9 +23,9 @@ const standardizeUser = user => ({
 */
 const generateJWT = user => ({
   token: jwt.sign(standardizeUser(user), authConfig.secret, {
-    expiresIn: authConfig.jwtExpiration,
+    expiresIn: authConfig.jwtExpiration
   }),
-  expiration: authConfig.jwtExpiration,
+  expiration: authConfig.jwtExpiration
 });
 
 /**
@@ -44,5 +44,5 @@ const getRole = (role) => {
 module.exports = {
   generateJWT,
   getRole,
-  standardizeUser,
+  standardizeUser
 };

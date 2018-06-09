@@ -3,14 +3,14 @@ const userControllers = require('../controllers/user');
 const authControllers = require('../controllers/auth');
 
 const {
-  jwtAuth,
+  jwtAuth
 } = authControllers;
 
 const {
   getUser,
   getUsers,
   deleteUser,
-  editUser,
+  editUser
 } = userControllers;
 
 const router = new Router({ prefix: '/user' });

@@ -1,5 +1,5 @@
 const validator = require('validator');
-const ERRORS = require('../constants').ERRORS;
+const { ERRORS } = require('../constants');
 
 /**
  * responseValidator - Validate responses and return corresponding errors
@@ -70,8 +70,7 @@ const responseValidator = function responseValidator(req, fields) {
 const filterSensitiveData = (req) => {
   const newBody = {};
   const sensitiveKeys = [
-    'password',
-    'billing',
+    'password'
   ];
 
   Object.keys(req).forEach((item) => {
@@ -85,5 +84,5 @@ const filterSensitiveData = (req) => {
 
 module.exports = {
   responseValidator,
-  filterSensitiveData,
+  filterSensitiveData
 };

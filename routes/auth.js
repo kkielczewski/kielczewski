@@ -7,7 +7,7 @@ const {
   register,
   forgotPassword,
   resetPassword,
-  getAuthenticatedUser,
+  getAuthenticatedUser
 } = authControllers;
 
 const router = new Router({ prefix: '/auth' });
