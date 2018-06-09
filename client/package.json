@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --profile --colors --env.env=dev",
     "dev:bundleanalyzer": "yarn dev --env.addons=bundleanalyzer",
-    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --progress --profile --colors --env.env=production",
     "build:bundleanalyzer": "yarn build --env.addons=bundleanalyzer"
   },
@@ -47,6 +46,7 @@
     "semantic-ui-react": "^0.80.2",
     "style-loader": "^0.21.0",
     "svgr": "^1.10.0",
+    "universal-cookie": "^2.1.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.9.1",
     "webpack-bundle-analyzer": "^2.13.1",

@@ -44,7 +44,7 @@ module.exports = {
     rules
   },
   performance: {
-    hints: 'error',
+    hints: false,
     maxAssetSize: 250000,
     maxEntrypointSize: 400000,
     assetFilter: assetFilename => (assetFilename.endsWith('.css') || assetFilename.endsWith('.js'))
