@@ -14,11 +14,11 @@ export const getEnvironment = () => process.env.NODE_ENV ? process.env.NODE_ENV 
 export const getApiUrl = () => {
   switch (getEnvironment()) {
     case 'production':
-      return 'http://api.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'stage':
-      return 'http://api-stage.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'test':
-      return 'http://api-test.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'development':
     default:
       return 'http://localhost:3000';
@@ -33,11 +33,11 @@ export const getApiUrl = () => {
 export const getAppUrl = () => {
   switch (getEnvironment()) {
     case 'production':
-      return 'http://app.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'stage':
-      return 'http://app-stage.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'test':
-      return 'http://app-test.kielczewski.herokuapp.com';
+      return 'http://kielczewski.herokuapp.com';
     case 'development':
     default:
       return 'http://localhost:8080';
