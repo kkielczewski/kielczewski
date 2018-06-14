@@ -20,7 +20,7 @@ module.exports = [
     }),
     exclude: /(node_modules|bower_components)/,
     include: [
-      path.resolve(__dirname, '../../source/styles')
+      path.resolve(__dirname, '../source/styles')
     ]
   },
   {

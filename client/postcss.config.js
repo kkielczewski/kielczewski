@@ -1,4 +1,4 @@
-import Prefixer from 'autoprefixer';
+const Prefixer = require('autoprefixer');
 
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
@@ -8,7 +8,7 @@ const AUTOPREFIXER_BROWSERS = [
   'Explorer >= 9',
   'iOS >= 7',
   'Opera >= 12',
-  'Safari >= 7.1',
+  'Safari >= 7.1'
 ];
 
 module.exports = {
