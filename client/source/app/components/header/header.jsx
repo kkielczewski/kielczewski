@@ -73,7 +73,7 @@ class Header extends Component {
 
     return (
       links.filter(link => link.authenticated === this.props.authenticated).map(link => (
-        <li key={link.name}>
+        <li className='item' key={link.name}>
           {link.link && <Link to={link.link}>{link.name}</Link>}
           {link.onClick && <a href='javascript:void(null);' onClick={link.onClick}>{link.name}</a>}
         </li>
