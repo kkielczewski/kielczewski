@@ -45,11 +45,6 @@ class Header extends Component {
     const { user } = this.props;
     const links = [
       {
-        name: 'Home',
-        link: '',
-        authenticated: false
-      },
-      {
         name: 'Dashboard',
         link: 'dashboard',
         authenticated: true
