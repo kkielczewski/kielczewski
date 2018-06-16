@@ -78,7 +78,7 @@ class Header extends Component {
 
     return (
       links.filter(link => link.authenticated === this.props.authenticated).map(link => (
-        <NavLink key={link.name} className='item' exact to={link.link}>{link.name}</NavLink>
+        <NavLink key={link.name} className='item' to={link.link}>{link.name}</NavLink>
       ))
     );
   };
