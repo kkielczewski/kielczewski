@@ -10,7 +10,7 @@ import {
   Responsive,
   Button
 } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getAuthenticatedUser } from '../../redux/modules/user';
 import { logoutUser } from '../../redux/modules/authentication';
 import { mobileBreakpoint } from '../../constants/ui-constants';
@@ -78,7 +78,10 @@ class Header extends Component {
 
     return (
       links.filter(link => link.authenticated === this.props.authenticated).map(link => (
-        <NavLink key={link.name} className='item' to={link.link}>{link.name}</NavLink>
+        <li key={link.name}>
+          {link.link && <Link to={link.link}>{link.name}</Link>}
+          {link.onClick && <a href='javascript:void(null);' onClick={link.onClick}>{link.name}</a>}
+        </li>
       ))
     );
   };
