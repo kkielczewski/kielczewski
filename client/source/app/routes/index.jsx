@@ -6,9 +6,11 @@ import ForgotPassword from '../components/authentication/forgot-password';
 import ResetPassword from '../components/authentication/reset-password';
 import RequireAuth from '../components/hoc/require-auth';
 import AuthenticatedRoutes from './authenticated/';
+import Main from '../containers/Main/index';
 
 const TopLevelRoutes = () => (
   <Switch>
+    <Route exact path="/" component ={Main} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/register" component={Register} />
     <Route exact path="/forgot-password" component={ForgotPassword} />

@@ -1,8 +1,6 @@
 # dependencies
 /node_modules
 
-# No need to follow bundles.
-/client/dist
 
 # No need to follow VSCode workspace settings.
 /.vscode/*
