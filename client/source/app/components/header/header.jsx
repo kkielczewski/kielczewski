@@ -10,7 +10,7 @@ import {
   Responsive,
   Button
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getAuthenticatedUser } from '../../redux/modules/user';
 import { logoutUser } from '../../redux/modules/authentication';
 import { mobileBreakpoint } from '../../constants/ui-constants';
@@ -45,6 +45,11 @@ class Header extends Component {
     const { user } = this.props;
     const links = [
       {
+        name: 'Home',
+        link: 'home',
+        authenticated: false
+      },
+      {
         name: 'Dashboard',
         link: 'dashboard',
         authenticated: true
@@ -73,10 +78,7 @@ class Header extends Component {
 
     return (
       links.filter(link => link.authenticated === this.props.authenticated).map(link => (
-        <li key={link.name}>
-          {link.link && <Link to={link.link}>{link.name}</Link>}
-          {link.onClick && <a href='javascript:void(null);' onClick={link.onClick}>{link.name}</a>}
-        </li>
+        <NavLink key={link.name} className='item' to={link.link}>{link.name}</NavLink>
       ))
     );
   };
