@@ -86,4 +86,4 @@ const mapStateToProps = ({ authentication }) => ({
   desiredPath: authentication.desiredPath
 });
 
-export default connect(mapStateToProps, { login })(translate('translations')(form(Login)));
+export default connect(mapStateToProps, { login })(form(Login));
