@@ -10,7 +10,7 @@ class View extends React.Component {
     return (
       <div onClick={this.onClick} style={{ height: '100%' }} >
         <Header onRef={ref => (this.header = ref)} i18n={this.props.i18n} />
-        <main>
+        <main style={{ marginTop: '40px' }}>
           <Routes/>
         </main>
       </div>

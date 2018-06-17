@@ -97,6 +97,9 @@ class Header extends Component {
       <div>
         <Responsive maxWidth={Responsive.onlyTablet.minWidth} >
             <Sidebar as={Menu} animation="overlay" width='thin' icon="labeled" inverted vertical visible={visible} >
+              <li className='item' key='Home' >
+                <Link exact to='/' >Home</Link>
+              </li>
               {this.buildNavigation()}
             </Sidebar>
             <Menu fixed="top" inverted>
@@ -104,17 +107,20 @@ class Header extends Component {
                 <Icon name="sidebar" />
               </Menu.Item>
               <Menu.Menu position="right">
-                <Button onClick={() => changeLanguage('pl')}>pl</Button>
-                <Button onClick={() => changeLanguage('en')}>en</Button>
+                <Button className='item' onClick={() => changeLanguage('pl')}>pl</Button>
+                <Button className='item' onClick={() => changeLanguage('en')}>en</Button>
               </Menu.Menu>
             </Menu>
         </Responsive>
         <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Menu fixed="top" inverted>
+          <li className='item' key='Home' >
+            <Link exact to='/' >Home</Link>
+          </li>
           {this.buildNavigation()}
           <Menu.Menu position="right">
-            <Button onClick={() => changeLanguage('pl')}>pl</Button>
-            <Button onClick={() => changeLanguage('en')}>en</Button>
+            <Button className='item' onClick={() => changeLanguage('pl')}>pl</Button>
+            <Button className='item' onClick={() => changeLanguage('en')}>en</Button>
           </Menu.Menu>
         </Menu>
         </Responsive>
