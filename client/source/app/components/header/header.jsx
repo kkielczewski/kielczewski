@@ -10,7 +10,7 @@ import {
   Responsive,
   Button
 } from 'semantic-ui-react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getAuthenticatedUser } from '../../redux/modules/user';
 import { logoutUser } from '../../redux/modules/authentication';
 import { mobileBreakpoint } from '../../constants/ui-constants';
@@ -98,7 +98,7 @@ class Header extends Component {
         <Responsive maxWidth={Responsive.onlyTablet.minWidth} >
             <Sidebar as={Menu} animation="overlay" width='thin' icon="labeled" inverted vertical visible={visible} >
               <li className='item' key='Home' >
-                <NavLink exact to='/' >Home</NavLink>
+                <Link exact to='/' >Home</Link>
               </li>
               {this.buildNavigation()}
             </Sidebar>
