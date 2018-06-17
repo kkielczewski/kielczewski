@@ -55,7 +55,7 @@ class Login extends Component {
       {
         id: 'password',
         name: 'Password',
-        label: t('Password'),
+        label: 'Password',
         type: 'password',
         placeholder: '********',
         component: TextInput
@@ -70,9 +70,9 @@ class Login extends Component {
           errors={errors}
           message={message}
           formSpec={formSpec}
-          submitText={t('Login')}
+          submitText='Login'
         />
-        <Link className="inline" to="/forgot-password">{t('Forgot password')}</Link> | <Link className="inline" to="/register">{t('Create account')}</Link>
+        <Link className="inline" to="/forgot-password">Forg</Link> | <Link className="inline" to="/register">Creat</Link>
       </div>
     );
   }
@@ -86,4 +86,4 @@ const mapStateToProps = ({ authentication }) => ({
   desiredPath: authentication.desiredPath
 });
 
-export default connect(mapStateToProps, { login })(form(translate('translations')(Login)));
+export default connect(mapStateToProps, { login })(form(Login));
