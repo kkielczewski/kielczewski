@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { translate, Trans } from 'react-i18next';
 import TextInput from '../form-fields/text-input';
 import GenericForm from '../form-fields/generic-form';
 import { register, CHANGE_AUTH } from '../../redux/modules/authentication';
@@ -22,49 +23,6 @@ class Register extends Component {
     loading: PropTypes.bool
   };
 
-  static formSpec = [
-    {
-      id: 'firstName',
-      name: 'name.first',
-      label: 'First Name',
-      type: 'text',
-      placeholder: 'John',
-      component: TextInput
-    },
-    {
-      id: 'lastName',
-      name: 'name.last',
-      label: 'Last Name',
-      type: 'text',
-      placeholder: 'Snow',
-      component: TextInput
-    },
-    {
-      id: 'email',
-      name: 'email',
-      label: 'Email',
-      type: 'email',
-      placeholder: 'you@yourdomain.com',
-      component: TextInput
-    },
-    {
-      id: 'password',
-      name: 'password',
-      label: 'Password',
-      type: 'password',
-      placeholder: '********',
-      component: TextInput
-    },
-    {
-      id: 'passwordConfirm',
-      name: 'passwordConfirm',
-      label: 'Confirm Password',
-      type: 'password',
-      placeholder: '********',
-      component: TextInput
-    }
-  ];
-
   handleFormSubmit = formProps => this.props.register(formProps);
 
   render = () => {
@@ -72,8 +30,53 @@ class Register extends Component {
       handleSubmit,
       errors,
       message,
-      loading
+      loading,
+      i18n,
+      t
     } = this.props;
+
+    const formSpec = [
+      {
+        id: 'firstName',
+        name: 'name.first',
+        label: t('First name'),
+        type: 'text',
+        placeholder: 'John',
+        component: TextInput
+      },
+      {
+        id: 'lastName',
+        name: 'name.last',
+        label: t('Last name'),
+        type: 'text',
+        placeholder: 'Snow',
+        component: TextInput
+      },
+      {
+        id: 'email',
+        name: 'email',
+        label: 'Email',
+        type: 'email',
+        placeholder: 'you@yourdomain.com',
+        component: TextInput
+      },
+      {
+        id: 'password',
+        name: 'password',
+        label: t('Password'),
+        type: 'password',
+        placeholder: '********',
+        component: TextInput
+      },
+      {
+        id: 'passwordConfirm',
+        name: 'passwordConfirm',
+        label: t('Confirm password'),
+        type: 'password',
+        placeholder: '********',
+        component: TextInput
+      }
+    ];
 
     return (
       <div className={`auth-box ${loading ? 'is-loading' : ''}`}>
@@ -82,10 +85,10 @@ class Register extends Component {
           onSubmit={handleSubmit(this.handleFormSubmit)}
           errors={errors}
           message={message}
-          formSpec={Register.formSpec}
-          submitText="Register"
+          formSpec={formSpec}
+          submitText={t('Register')}
         />
-        <Link className="inline" to="/login">Have an account?</Link>
+        <Link className="inline" to="/login">{t('Have account')}</Link>
       </div>
     );
   }
@@ -98,4 +101,4 @@ const mapStateToProps = ({ authentication }) => ({
   authenticated: authentication.authenticated
 });
 
-export default connect(mapStateToProps, { register })(form(Register));
+export default connect(mapStateToProps, { register })(translate('translations')(form(Register)));
