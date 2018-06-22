@@ -2,22 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Container,
   Icon,
-  Image,
   Menu,
   Sidebar,
-  Responsive,
-  Button
+  Responsive
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getAuthenticatedUser } from '../../redux/modules/user';
 import { logoutUser } from '../../redux/modules/authentication';
 import { mobileBreakpoint } from '../../constants/ui-constants';
-
-const NavBarChildren = ({ children }) => (
-  <Container style={{ width: '100%' }}>{children}</Container>
-);
 
 class Header extends Component {
   constructor(props) {
@@ -82,16 +75,7 @@ class Header extends Component {
   };
 
   render() {
-    const {
-      t,
-      i18n
-    } = this.props;
     const { visible } = this.state;
-
-    const changeLanguage = (lng) => {
-      console.log(i18n);
-      i18n.changeLanguage(lng);
-    };
 
     return (
       <div>
@@ -107,8 +91,6 @@ class Header extends Component {
                 <Icon name="sidebar" />
               </Menu.Item>
               <Menu.Menu position="right">
-                <Button className='item' onClick={() => changeLanguage('pl')}>pl</Button>
-                <Button className='item' onClick={() => changeLanguage('en')}>en</Button>
               </Menu.Menu>
             </Menu>
         </Responsive>
@@ -119,8 +101,6 @@ class Header extends Component {
           </li>
           {this.buildNavigation()}
           <Menu.Menu position="right">
-            <Button className='item' onClick={() => changeLanguage('pl')}>pl</Button>
-            <Button className='item' onClick={() => changeLanguage('en')}>en</Button>
           </Menu.Menu>
         </Menu>
         </Responsive>
